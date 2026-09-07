@@ -1,0 +1,113 @@
+{
+  "entities": {
+    "FabricRecord": {
+      "title": "FabricRecord",
+      "description": "Finished fabric roll intake record (MRR)",
+      "type": "object",
+      "properties": {
+        "mrrNo": { "type": "string" },
+        "buyerName": { "type": "string" },
+        "styleName": { "type": "string" },
+        "storeRef": { "type": "string" },
+        "fabricType": { "type": "string" },
+        "color": { "type": "string" },
+        "receiveDate": { "type": "string" },
+        "rollCount": { "type": "number" },
+        "rcvQtyKg": { "type": "number" },
+        "location": { "type": "string" },
+        "lotNo": { "type": "string" },
+        "gsm": { "type": "number" },
+        "dia": { "type": "string" },
+        "qcStatus": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["mrrNo", "buyerName", "styleName", "storeRef", "rcvQtyKg"]
+    },
+    "DeliveryRecord": {
+      "title": "DeliveryRecord",
+      "description": "Finished fabric delivery challan record to cutting",
+      "type": "object",
+      "properties": {
+        "challanNo": { "type": "string" },
+        "buyer": { "type": "string" },
+        "style": { "type": "string" },
+        "storeRef": { "type": "string" },
+        "deliveryDate": { "type": "string" },
+        "deliveredKg": { "type": "number" },
+        "rollCount": { "type": "number" },
+        "personOfCutting": { "type": "string" },
+        "vehicleNo": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["challanNo", "storeRef", "deliveredKg"]
+    },
+    "OrderTransfer": {
+      "title": "OrderTransfer",
+      "description": "Fabric allocation transfer between store references",
+      "type": "object",
+      "properties": {
+        "transferId": { "type": "string" },
+        "fromStoreRef": { "type": "string" },
+        "toStoreRef": { "type": "string" },
+        "transferQty": { "type": "number" },
+        "status": { "type": "string" },
+        "reason": { "type": "string" },
+        "requestedBy": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["transferId", "fromStoreRef", "toStoreRef", "transferQty"]
+    },
+    "UserTask": {
+      "title": "UserTask",
+      "description": "Warehouse operational task or QC follow-up",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "priority": { "type": "string" },
+        "assignee": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "status"]
+    },
+    "ProjectOrder": {
+      "title": "ProjectOrder",
+      "description": "Buyer project production and shipment tracking",
+      "type": "object",
+      "properties": {
+        "storeRef": { "type": "string" },
+        "buyerName": { "type": "string" },
+        "styleName": { "type": "string" },
+        "orderQtyKg": { "type": "number" },
+        "deliveredKg": { "type": "number" },
+        "status": { "type": "string" },
+        "shipmentDate": { "type": "string" }
+      },
+      "required": ["storeRef", "buyerName", "orderQtyKg"]
+    }
+  },
+  "firestore": {
+    "/fabric_records/{fabricId}": {
+      "schema": "FabricRecord",
+      "description": "Intake records for finished fabric rolls"
+    },
+    "/delivery_records/{deliveryId}": {
+      "schema": "DeliveryRecord",
+      "description": "Dispatched delivery records to cutting floors"
+    },
+    "/order_transfers/{transferId}": {
+      "schema": "OrderTransfer",
+      "description": "Inter-order fabric allocation transfers"
+    },
+    "/tasks/{taskId}": {
+      "schema": "UserTask",
+      "description": "Warehouse tasks and QC actions"
+    },
+    "/project_orders/{projectId}": {
+      "schema": "ProjectOrder",
+      "description": "Buyer style project master schedules"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "GMS FINISH FABRIC MCD2",
+  "description": "Warehouse Fabric Received Management System with real-time user task tracking, project updates, delivery challans, stock ledger, and rack QR codes.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
